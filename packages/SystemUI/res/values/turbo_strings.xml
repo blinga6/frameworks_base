@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2016 Turbo ROM
-
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -229,4 +228,23 @@
     <string name="quick_settings_pulse_enabled">Pulse Enabled</string>
     <string name="quick_settings_pulse_disabled">No Visualizer</string>
     <string name="quick_settings_pulse_label">Navigationbar Visualizer</string>
+	
+	    <!-- Off/On/Toggle -->
+	    <string name="off">Off</string>
+	    <string name="on">On</string>
+	    <string name="toggle">Toggle</string>
+	
+	    <!-- Dialog Cancel/OK -->
+	    <string name="cancel">Cancel</string>
+	    <string name="dlg_ok">Ok</string>
+	    <string name="yes">Yes</string>
+	    <string name="no">No</string>
+	
+	    <!-- Slim Shortcut Actions -->
+	    <string name="shortcut_picker">Slim Shortcuts</string>
+	    <string name="shortcut_rotation">Rotation</string>
+	    <string name="shortcut_reboot">Reboot</string>
+	    <string name="shortcut_recovery">Recovery</string>
+	    <string name="shortcut_toggle_title">Action to perform</string>
+	
 </resources>
