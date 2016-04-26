@@ -212,6 +212,7 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
         mSomcQuickSettings = findViewById(R.id.somc_qs_button);
         mSomcQuickSettings.setOnClickListener(this);
         mTaskManagerButton = findViewById(R.id.task_manager_button);
+        mTaskManagerButton.setOnLongClickListener(this);
         mHeadsUpButton = findViewById(R.id.heads_up_button);
         mHeadsUpButton.setOnClickListener(this);
         mHeadsUpButton.setOnLongClickListener(this);
@@ -492,28 +493,30 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
 
     private void updateSystemIconsLayoutParams() {
         RelativeLayout.LayoutParams lp = (LayoutParams) mSystemIconsSuperContainer.getLayoutParams();
-        int baseId = mSomcQuickSettings.getVisibility() != View.GONE
-                ? mSomcQuickSettings.getId() : mSettingsButton.getId();
-        int rule = mExpanded
-                ? baseId
-                : mMultiUserSwitch.getId();
+	    int baseId = mSomcQuickSettings.getVisibility() != View.GONE
+		    ? mSomcQuickSettings.getId() : mSettingsButton.getId();
+        int headsUp = mHeadsUpButton != null
+			? mHeadsUpButton.getId() : mSettingsButton.getId();
         int taskManager = mShowTaskManager && mExpanded
-                ? mTaskManagerButton.getId() : headsUp;
+			? mTaskManagerButton.getId() : headsUp;
+		int rule = mExpanded
+            ? baseId
+		    : mMultiUserSwitch.getId();
         int ruleHeadsUpButton = mExpanded
-                ? headsUp
-                : mMultiUserSwitch.getId();
+			? headsUp
+			: mMultiUserSwitch.getId();
         int ruleTaskManager = mExpanded
-                ? taskManager
-                : mMultiUserSwitch.getId();
+			? taskManager
+			: mMultiUserSwitch.getId();
         if (ruleHeadsUpButton != lp.getRules()[RelativeLayout.START_OF] &&
-                ruleTaskManager != lp.getRules()[RelativeLayout.START_OF]) {
+			ruleTaskManager != lp.getRules()[RelativeLayout.START_OF]) {
             lp.addRule(RelativeLayout.START_OF, ruleHeadsUpButton);
             lp.addRule(RelativeLayout.START_OF, ruleTaskManager);
         }
         mSystemIconsSuperContainer.setLayoutParams(lp);
     }
-
-    private void updateListeners() {
+ 
+	private void updateListeners() {
         if (mListening) {
             mSettingsObserver.observe();
             mBatteryController.addStateChangedCallback(this);
@@ -717,8 +720,10 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
             startUserLongClickActivity();
         } else if (v == mHeadsUpButton) {
             startHeadsUpLongClickActivity();
-        }
         vibrateheader(20);
+        } else if (v == mTaskManagerButton) {
+            startTaskManagerLongClickActivity();
+        }
         return false;
     }
 
@@ -821,6 +826,13 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.setClassName("com.android.settings",
             "com.android.settings.Settings$HeadsUpSettingsActivity");
+        mActivityStarter.startActivity(intent, true /* dismissShade */);
+    }
+
+    private void startTaskManagerLongClickActivity() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.setClassName("com.android.settings",
+            "com.android.settings.Settings$RunningServicesActivity");
         mActivityStarter.startActivity(intent, true /* dismissShade */);
     }
 
