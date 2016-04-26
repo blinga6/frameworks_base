@@ -702,9 +702,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_TURBO_LOGO_STYLE),
                     false, this, UserHandle.USER_ALL);
-	    resolver.registerContentObserver(Settings.System.getUriFor(						
-                    Settings.System.ENABLE_TASK_MANAGER),
-                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -4165,6 +4162,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mContext.getContentResolver().registerContentObserver(
                 Settings.Secure.getUriFor(Settings.Secure.USER_SETUP_COMPLETE), true,
                 mUserSetupObserver, mCurrentUserId);
+    }
+
+    public void resetQsPanelVisibility() {
+        mShowTaskList = mShowTaskList;
+        if (mShowTaskList) {
+            mQSPanel.setVisibility(View.VISIBLE);
+            mTaskManagerPanel.setVisibility(View.GONE);
+            mShowTaskList = false;
+        }
     }
 
     /**
