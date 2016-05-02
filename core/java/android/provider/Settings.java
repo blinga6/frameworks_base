@@ -4096,7 +4096,22 @@ public final class Settings {
          *
          * @hide
          */
-        public static final String LOCKSCREEN_DATE_COLOR = "lockscreen_date_color";
+        public static final String LOCKSCREEN_DATE_COLOR = "lockscreen_date_color"
+
+        /**
+         * @hide
+         */
+        public static final String STATUSBAR_BATTERY_BAR_CHARGING_COLOR = "statusbar_battery_bar_charging_color";
+
+        /**
+         * @hide
+         */
+        public static final String STATUSBAR_BATTERY_BAR_BATTERY_LOW_COLOR = "statusbar_battery_bar_battery_low_color";
+
+        /**
+         * @hide
+         */
+        public static final String STATUSBAR_BATTERY_BAR_ANIMATE = "statusbar_battery_bar_animate";
 
       	/**
          * Whether to enable status and navigation bar color in battery saver mode.
