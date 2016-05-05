@@ -725,7 +725,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 || uri.equals(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_STATUS_ICONS_COLOR))) {
                 updateStatusNetworkIconColors(true);
-				mHeader.updateSBHIconColor(true);
+				mHeader.updateSBHIconColor();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_NOTIFICATION_ICONS_COLOR))) {
                 updateNotificationIconColor();
@@ -2598,7 +2598,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             updateCarrierLabelColor();
         }
 		updateStatusNetworkIconColors(false);
-		mHeader.updateSBHIconColor(false);
+		mHeader.updateSBHIconColor();
 		updateBatteryIndicator();
 		updateBatteryTextVisibility();
 		updateBatteryCircleDots();
