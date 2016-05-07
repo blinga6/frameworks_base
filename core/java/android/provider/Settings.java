@@ -5045,6 +5045,19 @@ public final class Settings {
         public static final String DB_TEXT_COLOR = "db_text_color";
 
         /**
+         * Dashboard category text color
+         * @hide
+         */
+        public static final String SETTINGS_CATEGORY_TEXT_COLOR = "settings_category_text_color";
+        
+        
+         /**
+         * Dashboard color
+         * @hide
+         */
+        public static final String SETTINGS_BG_COLOR = "settings_bg_color";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
