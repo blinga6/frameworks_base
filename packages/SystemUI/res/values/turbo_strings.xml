@@ -92,6 +92,10 @@
     <string name="quick_settings_layers_manager_label">Layers Manager</string>
     <string name="quick_settings_kill_app_label">Kill App</string>
 
+    <!-- ViPER4Android -->
+    <string name="quick_settings_v4a_label">ViPER4Android</string>
+    <string name="accessibility_quick_settings_v4a">ViPER4Android.</string>
+
     <!-- Content description of the Layers Manager tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
     <string name="accessibility_quick_settings_layers_manager">Layers Manager.</string>
 
