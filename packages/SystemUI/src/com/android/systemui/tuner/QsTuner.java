@@ -222,7 +222,8 @@ public class QsTuner extends Fragment implements Callback {
 	else if (spec.equals("timeout")) return R.string.quick_settings_timeout_label;
 	else if (spec.equals("usb_tether")) return R.string.quick_settings_usb_tether_label;
 	else if (spec.equals("volume")) return R.string.quick_settings_volume_panel_label;
-    else if (spec.equals("pulse")) return R.string.quick_settings_pulse_label;
+        else if (spec.equals("pulse")) return R.string.quick_settings_pulse_label;
+	else if (spec.equals("kill_app")) return R.string.quick_settings_kill_app_label;
         return 0;
     }
 
@@ -483,6 +484,7 @@ public class QsTuner extends Fragment implements Callback {
 	    else if (mSpec.equals("usb_tether")) return R.drawable.ic_qs_usb_tether_off;
 	    else if (mSpec.equals("volume")) return R.drawable.ic_qs_volume_panel;
 	    else if (mSpec.equals("pulse")) return R.drawable.ic_qs_pulse;
+ 	    else if (mSpec.equals("kill_app")) return R.drawable.ic_qs_app_kill;
             return R.drawable.android;
         }
 
