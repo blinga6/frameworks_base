@@ -212,6 +212,7 @@ public class NotificationPanelView extends PanelView implements
     private SettingsObserver mSettingsObserver;
     private int mOneFingerQuickSettingsInterceptMode;
     private QSDetailClipper mClipper;
+    private int mQsSmartPullDown;
 
     private float mKeyguardStatusBarAnimateAlpha = 1f;
     private int mOldLayoutDirection;
@@ -1557,6 +1558,13 @@ public class NotificationPanelView extends PanelView implements
         } else {
             return onHeader || (showQsOverride && mStatusBarState == StatusBarState.SHADE);
         }
+
+        if (mQsSmartPullDown == 1 && !mStatusBar.hasActiveClearableNotifications()
+                || mQsSmartPullDown == 2 && !mStatusBar.hasActiveVisibleNotifications()
+                || (mQsSmartPullDown == 3 && !mStatusBar.hasActiveVisibleNotifications()
+                        && !mStatusBar.hasActiveClearableNotifications())) {
+                showQsOverride = true;
+        }
     }
 
     void setTaskManagerEnabled(boolean enabled) {
@@ -2589,6 +2597,9 @@ public class NotificationPanelView extends PanelView implements
 	    resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.ENABLE_TASK_MANAGER), 
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_SMART_PULLDOWN),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -2618,6 +2629,9 @@ public class NotificationPanelView extends PanelView implements
 	    mShowTaskManager = Settings.System.getIntForUser(
                    resolver, Settings.System.ENABLE_TASK_MANAGER, 0, 
                    UserHandle.USER_CURRENT) == 1;
+            mQsSmartPullDown = Settings.System.getIntForUser(
+                    resolver, Settings.System.QS_SMART_PULLDOWN, 0,
+                    UserHandle.USER_CURRENT);
         }
     }
 }
