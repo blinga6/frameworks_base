@@ -869,6 +869,7 @@ public class NotificationPanelView extends PanelView implements
                         || event.isButtonPressed(MotionEvent.BUTTON_TERTIARY));
 
         return oneFingerDrag || twoFingerDrag || stylusButtonClickDrag || mouseButtonClickDrag;
+		
     }
 
     private void handleQsDown(MotionEvent event) {
@@ -1556,14 +1557,13 @@ public class NotificationPanelView extends PanelView implements
         if (mQsExpanded) {
             return onHeader || (mScrollView.isScrolledToBottom() && yDiff < 0) && isInQsArea(x, y);
         } else {
+			if (mQsSmartPullDown == 1 && !mStatusBar.hasActiveClearableNotifications()
+				|| mQsSmartPullDown == 2 && !mStatusBar.hasActiveVisibleNotifications()
+				|| (mQsSmartPullDown == 3 && !mStatusBar.hasActiveVisibleNotifications()
+				&& !mStatusBar.hasActiveClearableNotifications())) {
+				showQsOverride = true;
+			}
             return onHeader || (showQsOverride && mStatusBarState == StatusBarState.SHADE);
-        }
-
-        if (mQsSmartPullDown == 1 && !mStatusBar.hasActiveClearableNotifications()
-                || mQsSmartPullDown == 2 && !mStatusBar.hasActiveVisibleNotifications()
-                || (mQsSmartPullDown == 3 && !mStatusBar.hasActiveVisibleNotifications()
-                        && !mStatusBar.hasActiveClearableNotifications())) {
-                showQsOverride = true;
         }
     }
 
