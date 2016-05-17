@@ -73,27 +73,6 @@
                 android:layout_height="match_parent"
                 >
 
-                <ImageView
-                    android:id="@+id/turbo_logo_left"
-                    android:layout_width="@dimen/status_bar_icon_size"
-                    android:layout_height="match_parent"
-                    android:paddingEnd="4dip"
-                    android:src="@drawable/ic_status_bar_turbo_logo"
-                    android:scaleType="center"
-                    android:visibility="gone"
-                    />
-
-                <com.android.systemui.statusbar.policy.ClockLeft
-                    android:id="@+id/left_clock"
-                    android:textAppearance="@style/TextAppearance.StatusBar.Clock"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:singleLine="true"
-                    android:paddingEnd="1dip"
-                    android:gravity="center"
-                    android:visibility="gone"
-                    />
-
                <com.android.keyguard.CarrierText
                     android:id="@+id/status_bar_carrier_text"
                     android:layout_width="wrap_content"
@@ -104,7 +83,31 @@
                     android:singleLine="true"
                     android:textColor="#ffffff" 
                     />
-
+                <com.android.systemui.statusbar.policy.ClockLeft
+                    android:id="@+id/left_clock"
+                    android:textAppearance="@style/TextAppearance.StatusBar.Clock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:singleLine="true"
+                    android:paddingEnd="1dip"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    />
+                <ImageView
+                    android:id="@+id/turbo_logo_left"
+                    android:layout_width="@dimen/status_bar_icon_size"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="4dip"
+                    android:src="@drawable/ic_status_bar_turbo_logo"
+                    android:scaleType="center"
+                    android:visibility="gone"
+                    />
+                <com.android.systemui.statusbar.StatusBarIconView android:id="@+id/moreIcon"
+                    android:layout_width="@dimen/status_bar_icon_size"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stat_notify_more"
+                    android:visibility="gone"
+                    />
                 <TextView
                    android:id="@+id/left_weather_temp"
                    android:layout_width="wrap_content"
@@ -116,20 +119,12 @@
                    android:paddingStart="4dp"
                    android:paddingEnd="4dp" 
 		   />
-
                 <com.android.systemui.statusbar.phone.IconMerger android:id="@+id/notificationIcons"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    />
-
-                <com.android.systemui.statusbar.StatusBarIconView android:id="@+id/moreIcon"
-                    android:layout_width="@dimen/status_bar_icon_size"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/stat_notify_more"
-                    android:visibility="gone"
                     />
             </com.android.keyguard.AlphaOptimizedLinearLayout>
 
@@ -140,6 +135,12 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             >
+            <com.android.systemui.statusbar.policy.NetworkTraffic
+                android:id="@+id/networkTraffic"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:singleLine="false"
+                android:gravity="right|center_vertical"/>
             <TextView
                 android:id="@+id/weather_temp"
                 android:layout_width="wrap_content"
@@ -150,14 +151,8 @@
                 android:visibility="gone"
                 android:paddingStart="2dp"
                 android:paddingEnd="4dp" />
-            <com.android.systemui.statusbar.policy.NetworkTraffic
-                android:id="@+id/networkTraffic"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:singleLine="false"
-                android:gravity="right|center_vertical"/>
-
-            <include layout="@layout/system_icons" />
+ 
+           <include layout="@layout/system_icons" />
 
             <TextView android:id="@+id/battery_level"
                 android:layout_width="wrap_content"

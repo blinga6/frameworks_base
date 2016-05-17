@@ -285,7 +285,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     public static final int FADE_KEYGUARD_DURATION = 300;
     public static final int FADE_KEYGUARD_DURATION_PULSING = 96;
 
-    // Weather temperature
+    // Status Bar Font Styles
     public static final int FONT_NORMAL = 0;
     public static final int FONT_ITALIC = 1;
     public static final int FONT_BOLD = 2;
@@ -429,6 +429,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private CarrierText mStatusBarCarrierLabel;
     private TextView mCarrierLabel;
     private boolean mShowCarrierInPanel = false;
+    private int mCarrierLabelFontStyle;
 
     boolean mExpandedVisible;
 
@@ -657,6 +658,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     Settings.System.STATUS_BAR_CARRIER_LABEL_COLOR),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
+                     Settings.System.STATUS_BAR_CARRIER_FONT_STYLE),
+                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_NETWORK_ICONS_SIGNAL_COLOR),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -753,6 +757,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 || uri.equals(Settings.System.getUriFor(
 					Settings.System.STATUS_BAR_CARRIER_LABEL_NUMBER_OF_NOTIFICATION_ICONS))) {
                 setCarrierLabelVisibility();
+            } else if (uri.equals(Settings.System.getUriFor(
+                     Settings.System.STATUS_BAR_CARRIER_FONT_STYLE))) {
+                 setCarrierLabelFontStyle();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_BATTERY_ICON_INDICATOR))) {
                 updateBatteryIndicator();
@@ -904,6 +911,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
             mBlurRadius = Settings.System.getInt(resolver,
                     Settings.System.LOCKSCREEN_BLUR_RADIUS, 14);
+
+           mCarrierLabelFontStyle = Settings.System.getIntForUser(
+                     resolver, Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 0,
+                     UserHandle.USER_CURRENT);
+             changeCarrierFontStyle(mCarrierLabelFontStyle);
+              updateSettings();
 	    }
     }
 
@@ -1015,6 +1028,83 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
     }
 
+    public void changeCarrierFontStyle(int font) {
+         if (mStatusBarCarrierLabel == null) return;
+         ContentResolver resolver = mContext.getContentResolver();
+         switch (font) {
+             case FONT_NORMAL:
+             default:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
+                 break;
+             case FONT_ITALIC:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
+                 break;
+             case FONT_BOLD:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+                 break;
+             case FONT_BOLD_ITALIC:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif", Typeface.BOLD_ITALIC));
+                 break;
+             case FONT_LIGHT:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+                 break;
+             case FONT_LIGHT_ITALIC:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-light", Typeface.ITALIC));
+                 break;
+             case FONT_THIN:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
+                 break;
+            case FONT_THIN_ITALIC:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-thin", Typeface.ITALIC));
+                 break;
+             case FONT_CONDENSED:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
+                 break;
+             case FONT_CONDENSED_ITALIC:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-condensed", Typeface.ITALIC));
+                 break;
+             case FONT_CONDENSED_BOLD:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
+                 break;
+             case FONT_CONDENSED_BOLD_ITALIC:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC));
+                 break;
+             case FONT_MEDIUM:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
+                 break;
+             case FONT_MEDIUM_ITALIC:
+                 mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-medium", Typeface.ITALIC));
+                 break;
+            case FONT_BLACK:
+                mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-black", Typeface.NORMAL));
+                break;
+            case FONT_BLACK_ITALIC:
+                mStatusBarCarrierLabel.setTypeface(Typeface.create("sans-serif-black", Typeface.ITALIC));
+                break;
+            case FONT_DANCINGSCRIPT:
+                mStatusBarCarrierLabel.setTypeface(Typeface.create("cursive", Typeface.NORMAL));
+                break;
+            case FONT_DANCINGSCRIPT_BOLD:
+                mStatusBarCarrierLabel.setTypeface(Typeface.create("cursive", Typeface.BOLD));
+                break;
+            case FONT_COMINGSOON:
+                mStatusBarCarrierLabel.setTypeface(Typeface.create("casual", Typeface.NORMAL));
+                break;
+            case FONT_NOTOSERIF:
+                mStatusBarCarrierLabel.setTypeface(Typeface.create("serif", Typeface.NORMAL));
+                break;
+            case FONT_NOTOSERIF_ITALIC:
+                mStatusBarCarrierLabel.setTypeface(Typeface.create("serif", Typeface.ITALIC));
+                break;
+            case FONT_NOTOSERIF_BOLD:
+                mStatusBarCarrierLabel.setTypeface(Typeface.create("serif", Typeface.BOLD));
+                break;
+            case FONT_NOTOSERIF_BOLD_ITALIC:
+                mStatusBarCarrierLabel.setTypeface(Typeface.create("serif", Typeface.BOLD_ITALIC));
+                break;
+         }
+     }
+ 
     // ensure quick settings is disabled until the current user makes it through the setup wizard
     private boolean mUserSetup = false;
     private ContentObserver mUserSetupObserver = new ContentObserver(new Handler()) {
@@ -2666,6 +2756,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 		updateShowChargeAnimation();
 		updateCutOutBatteryText();
 		updateBatteryColors(false);
+                setCarrierLabelFontStyle();
     }
 
     private void updateCarrierLabel() {
@@ -2727,6 +2818,14 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
     }
 
+   private void setCarrierLabelFontStyle() {
+         ContentResolver resolver = mContext.getContentResolver();
+ 
+         mCarrierLabelFontStyle = Settings.System.getIntForUser(
+                 resolver, Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 0,
+                 UserHandle.USER_CURRENT);
+     }
+ 
     private void updateCarrierLabelColor() {
         final boolean show = Settings.System.getInt(
                 mContext.getContentResolver(),

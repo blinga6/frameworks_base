@@ -4621,6 +4621,18 @@ public final class Settings {
         public static final String STATUS_BAR_CARRIER_LABEL_COLOR = "status_bar_carrier_label_color";
 
         /**
+         * Settings for carrier label font size
+         * @hide
+         */
+        public static final String STATUS_BAR_CARRIER_FONT_SIZE = "status_bar_carrier_font_size";
+
+        /**
+         * Font style for the custom carrier label
+         * @hide
+         */
+         public static final String STATUS_BAR_CARRIER_FONT_STYLE = "status_bar_carrier_font_style";
+ 
+        /**
          * Color of the signal icons on the status bar
          * @hide
          */
