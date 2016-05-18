@@ -4114,13 +4114,6 @@ public final class Settings {
         public static final String STATUSBAR_BATTERY_BAR_ANIMATE = "statusbar_battery_bar_animate";
 
       	/**
-         * Whether to enable status and navigation bar color in battery saver mode.
-         *
-         * @hide
-         */
-        public static final String BATTERY_SAVER_MODE_COLOR = "battery_save_mode_color";
-
-      	/**
          * show the membar in recents
          *  @hide
          */
