@@ -21,22 +21,22 @@
     <color name="notification_action_color_filter">#9F9F9F</color>
     
     <!-- System - Accents -->
- 	<color name="accent_material_light">#606060</color>
- 	<color name="accent_material_dark">#606060</color>
+ 	<color name="accent_material_light">#009688</color>
+ 	<color name="accent_material_dark">#009688</color>
  
  	<!-- StatusBar Expanded - User Icons -->
- 	<color name="user_icon_1">#606060</color>
- 	<color name="user_icon_2">#606060</color>
- 	<color name="user_icon_3">#606060</color>
- 	<color name="user_icon_4">#606060</color>
- 	<color name="user_icon_5">#606060</color>
- 	<color name="user_icon_6">#606060</color>
- 	<color name="user_icon_7">#606060</color>
- 	<color name="user_icon_8">#606060</color>
- 	<color name="user_icon_default_gray">#606060</color>
- 	<color name="user_icon_default_white">#606060</color>
+ 	<color name="user_icon_1">#009688</color>
+ 	<color name="user_icon_2">#009688</color>
+ 	<color name="user_icon_3">#009688</color>
+ 	<color name="user_icon_4">#009688</color>
+ 	<color name="user_icon_5">#009688</color>
+ 	<color name="user_icon_6">#009688</color>
+ 	<color name="user_icon_7">#009688</color>
+ 	<color name="user_icon_8">#009688</color>
+ 	<color name="user_icon_default_gray">#009688</color>
+ 	<color name="user_icon_default_white">#009688</color>
 
     <!-- Slim's drag sort list view -->
-    <color name="dslv_icon_dark">#ff606060</color>
+    <color name="dslv_icon_dark">#ff009688</color>
 
 </resources>
