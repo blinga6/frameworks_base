@@ -4096,7 +4096,7 @@ public final class Settings {
          *
          * @hide
          */
-        public static final String LOCKSCREEN_DATE_COLOR = "lockscreen_date_color"
+        public static final String LOCKSCREEN_DATE_COLOR = "lockscreen_date_color";
 
         /**
          * @hide
@@ -4492,11 +4492,6 @@ public final class Settings {
          * @hide
          */
         public static final String STATUSBAR_BATTERY_BAR_STYLE = "statusbar_battery_bar_style";
-
-        /**
-         * @hide
-         */
-        public static final String STATUSBAR_BATTERY_BAR_ANIMATE = "statusbar_battery_bar_animate";
 
         /**
          * Whether to display set of animations when prompting the power menu
@@ -5095,7 +5090,75 @@ public final class Settings {
         */
        public static final String USB_DATA_AUTO_UNLOCK = "usb_data_auto_unlock";
 
-          /**
+         /**
+          * Show or hide clock
+          * 0 - hide
+          * 1 - show (default)
+          * @hide
+          */
+         public static final String KEYGUARD_STATUS_BAR_CLOCK = "keyguard_status_bar_clock";
+ 
+         /**
+          * AM/PM Style for clock options
+          * 0 - Normal AM/PM
+          * 1 - Small AM/PM
+          * 2 - No AM/PM
+          * @hide
+          */
+         public static final String KEYGUARD_STATUSBAR_CLOCK_AM_PM_STYLE = "keyguard_statusbar_clock_am_pm_style";
+ 
+         /**
+          * Style of clock
+          * 0 - Right Clock
+          * 1 - Center Clock
+          * 2 - Left Clock
+          * @hide
+          */
+         public static final String KEYGUARD_STATUSBAR_CLOCK_STYLE = "keyguard_statusbar_clock_style";
+ 
+         /**
+          * Shows custom date before clock time
+          * 0 - No Date
+          * 1 - Small Date
+          * 2 - Normal Date
+          * @hide
+          */
+         public static final String KEYGUARD_STATUSBAR_CLOCK_DATE_DISPLAY = "keyguard_statusbar_clock_date_display";
+ 
+         /**
+          * Sets the date string style
+          * 0 - Regular style
+          * 1 - Lowercase
+          * 2 - Uppercase
+          * @hide
+          */
+         public static final String KEYGUARD_STATUSBAR_CLOCK_DATE_STYLE = "keyguard_statusbar_clock_date_style";
+ 
+         /**
+          * Stores the java DateFormat string for the date
+          * @hide
+          */
+         public static final String KEYGUARD_STATUSBAR_CLOCK_DATE_FORMAT = "keyguard_statusbar_clock_date_format";
+ 
+        /**
+         * Setting for clock color
+         * @hide
+         */
+        public static final String KEYGUARD_STATUSBAR_CLOCK_COLOR = "keyguard_statusbar_clock_color";
+
+        /**
+         * Settings for clock font style
+         * @hide
+         */
+        public static final String KEYGUARD_STATUSBAR_CLOCK_FONT_STYLE = "keyguard_statusbar_clock_font_style";
+
+        /**
+         * Settings for clock font size
+         * @hide
+         */
+        public static final String KEYGUARD_STATUSBAR_CLOCK_FONT_SIZE = "keyguard_statusbar_clock_font_size";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
